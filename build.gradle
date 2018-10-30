@@ -1,0 +1,64 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.19"
+    }
+}
+apply plugin: 'java'
+apply plugin: 'application'
+//shadow打包插件，用于将所有依赖以及工程类都打包到一个jar
+// 参考说明：
+//      http://imperceptiblethoughts.com
+//      https://www.zybuluo.com/xtccc/note/317832
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'net.ltgt.apt'
+
+mainClassName = 'com.reizx.jwrapper.App'
+
+version = '0.1.1'
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile('com.google.guava:guava:21.0')
+    compile 'com.reizx:jor:0.1.1'
+    compile group: 'org.jooq', name: 'joor-java-6', version: '0.9.8'
+    compile 'com.google.code.gson:gson:2.8.5'
+    compile 'cn.hutool:hutool-all:4.1.19'
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    apt 'org.projectlombok:lombok:1.18.2'
+    // https://mvnrepository.com/artifact/args4j/args4j
+    compile group: 'args4j', name: 'args4j', version: '2.33'//参数解析库
+
+}
+
+//发布JAR包命令：:
+// gradlew shadowJar
+shadowJar {
+    baseName = 'shadow'
+    // 只把指定的依赖打入到fat jar中
+    dependencies {
+        // 这个依赖不一定是compile阶段的依赖
+    }
+}
+
+//复制文件
+task copyJar(type: Copy, dependsOn: shadowJar){
+    from 'build/libs'
+    into 'release'
+}
+
+//发布JAR包命令：:
+// gradlew shadowJar
+// 发布的jar包生成位置为 release
+task release(type: Copy, dependsOn: [clean, shadowJar, copyJar]) {
+}
