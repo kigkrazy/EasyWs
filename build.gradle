@@ -41,6 +41,16 @@ dependencies {
 
 }
 
+/**
+ * fix bug :
+ * debug模式与release模式，由于中文的编码问题导致的结果出错问题。
+ *
+ */
+//设置gradle编译时候编码为utf-8
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
 //发布JAR包命令：:
 // gradlew shadowJar
 shadowJar {
