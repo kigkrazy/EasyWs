@@ -1,6 +1,7 @@
 package com.reizx.jwrapper;
 
 import com.reizx.jwrapper.entity.ArgsOptions;
+import com.reizx.jwrapper.util.JwcLog;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import okhttp3.OkHttpClient;
@@ -21,7 +22,8 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         parseArgs(args);//解析参数
-        initHttpUtils();
+        initHttpUtils();//初始化HTTP工具类
+        JwcLog.init("lucifer");//初始化log的tag
 
     }
 

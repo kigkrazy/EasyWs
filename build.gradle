@@ -30,7 +30,6 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile('com.google.guava:guava:21.0')
-    compile 'com.reizx:jor:0.1.1'
     compile group: 'org.jooq', name: 'joor-java-6', version: '0.9.8'
     compile 'com.google.code.gson:gson:2.8.5'
     compile 'cn.hutool:hutool-all:4.1.19'
@@ -39,6 +38,17 @@ dependencies {
     // https://mvnrepository.com/artifact/args4j/args4j
     compile group: 'args4j', name: 'args4j', version: '2.33'//参数解析库
 
+    //一些常用工具类
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8'
+
+    //log类
+    //https://github.com/zserge/log
+    compile 'co.trikita:log:1.1.5'
+    //http请求工具类
+    compile 'com.reizx:okhttputils:3.0.2'
 }
 
 /**
