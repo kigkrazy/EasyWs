@@ -21,7 +21,7 @@ apply plugin: 'net.ltgt.apt'
 
 mainClassName = 'com.reizx.jwrapper.App'
 
-version = '0.1.1'
+version = '0.1.2'
 repositories {
     mavenCentral()
     jcenter()
