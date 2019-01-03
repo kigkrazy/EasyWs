@@ -1,13 +1,13 @@
 package com.reizx.jwrapper;
 
 import com.reizx.jwrapper.entity.ArgsOptions;
-import com.reizx.jwrapper.util.JwcLog;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.StringUtils;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
+import trikita.log.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,9 +22,7 @@ public class App {
      */
     public static void main(String[] args) throws Exception {
         parseArgs(args);//解析参数
-        initHttpUtils();//初始化HTTP工具类
-        JwcLog.init("lucifer");//初始化log的tag
-
+        EnvHelper.initEnv("jwc-log", Log.V, 10 * 1000);
     }
 
     /**
@@ -55,7 +53,7 @@ public class App {
      */
     public static void initHttpUtils() {
         long timeout = 15 * 1000;
-        if (AppContext.getApp().isDebug()){
+        if (AppContext.getApp().isDebug()) {
             timeout = 60 * 1000;
         }
 
