@@ -4,10 +4,13 @@
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
-/build
 /captures
 .externalNativeBuild
 .idea
 .directory
+/build
 /release
 /out
+*/out
+*/build
+*/release

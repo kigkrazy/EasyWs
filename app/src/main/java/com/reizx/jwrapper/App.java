@@ -47,25 +47,4 @@ public class App {
 
         AppContext.getApp().setDebug(options.isDebug());//设置debug标志位
     }
-
-    /**
-     * 初始化http工具类
-     */
-    public static void initHttpUtils() {
-        long timeout = 15 * 1000;
-        if (AppContext.getApp().isDebug()) {
-            timeout = 60 * 1000;
-        }
-
-        HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)//设置可访问所有的https网站
-                //.addInterceptor(new LoggerInterceptor("TAG"))去掉日志
-                .connectTimeout(timeout, TimeUnit.MILLISECONDS)
-                .readTimeout(timeout, TimeUnit.MILLISECONDS)
-                //其他配置
-                .build();
-
-        OkHttpUtils.initClient(okHttpClient);
-    }
 }
