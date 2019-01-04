@@ -9,7 +9,7 @@ apply plugin: 'net.ltgt.apt'
 
 mainClassName = 'com.reizx.jwrapper.App'
 
-version = '0.2.1'
+version = '1.0.1'
 repositories {
     maven {
         url 'http://maven.aliyun.com/nexus/content/groups/public/'
