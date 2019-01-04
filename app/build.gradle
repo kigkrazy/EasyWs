@@ -55,7 +55,7 @@ tasks.withType(JavaCompile) {
 //发布JAR包命令：:
 // gradlew shadowJar
 shadowJar {
-    baseName = 'shadow'
+    baseName = 'jwarpper-cli'
     // 只把指定的依赖打入到fat jar中
     dependencies {
         // 这个依赖不一定是compile阶段的依赖
@@ -65,7 +65,7 @@ shadowJar {
 //复制文件
 task copyJar(type: Copy, dependsOn: shadowJar) {
     from 'build/libs'
-    into 'release'
+    into "${project.rootDir}/release"
 }
 
 //发布JAR包命令：:

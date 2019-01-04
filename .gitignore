@@ -8,8 +8,8 @@
 .externalNativeBuild
 .idea
 .directory
-/build
-/release
+build
+release
 /out
 */out
 */build
