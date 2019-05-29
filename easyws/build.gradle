@@ -1,6 +1,6 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java-library'
+apply plugin: 'net.ltgt.apt'
+
 
 group 'com.reizx'
 version 'unspecified'
@@ -13,4 +13,9 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile 'cn.hutool:hutool-all:4.5.8'
+
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
