@@ -1,3 +1,4 @@
-rootProject.name = 'jwrapper-cli'
+rootProject.name = 'EasyWs'
 include 'app'
+include 'easyws'
 
