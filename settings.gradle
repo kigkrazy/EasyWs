@@ -1,4 +1,3 @@
 rootProject.name = 'EasyWs'
 include 'app'
 include 'easyws'
-

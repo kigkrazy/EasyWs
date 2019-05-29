@@ -18,4 +18,7 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+    //websocket lib
+    compile "org.java-websocket:Java-WebSocket:1.4.0"
 }
