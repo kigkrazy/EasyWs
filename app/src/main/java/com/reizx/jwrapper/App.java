@@ -1,15 +1,10 @@
 package com.reizx.jwrapper;
 
 import com.reizx.jwrapper.entity.ArgsOptions;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.https.HttpsUtils;
-import okhttp3.OkHttpClient;
 import org.apache.commons.lang3.StringUtils;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import trikita.log.Log;
-
-import java.util.concurrent.TimeUnit;
 
 public class App {
     private static AppContext app = AppContext.getApp();//全局上下文

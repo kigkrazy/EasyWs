@@ -40,6 +40,8 @@ dependencies {
     compile 'co.trikita:log:1.1.5'
     //http请求工具类
     compile 'com.reizx:okhttputils:3.0.2'
+
+    compile project(':easyws')
 }
 
 /**
