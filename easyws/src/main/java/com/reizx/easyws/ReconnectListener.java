@@ -15,6 +15,7 @@ class ReconnectListener {
             public void run() {
                 try {
                     if (retry >= event.getMaxRetry()){
+                        // 重试次数过多
                         timer.cancel();
                         return;
                     }
