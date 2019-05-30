@@ -2,6 +2,7 @@ package com.reizx.easyws;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
 import org.java_websocket.client.WebSocketClient;
 
 /**
@@ -10,5 +11,8 @@ import org.java_websocket.client.WebSocketClient;
 @Data
 @AllArgsConstructor
 class ReconnectEvent {
-    WebSocketClient ws;
+    @NonNull
+    private WebSocketClient ws;
+    @NonNull
+    private int maxRetry;
 }

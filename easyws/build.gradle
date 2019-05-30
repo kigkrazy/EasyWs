@@ -18,6 +18,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
 
+    //guava
+    compile('com.google.guava:guava:21.0')
     //websocket lib
     compile "org.java-websocket:Java-WebSocket:1.4.0"
 }

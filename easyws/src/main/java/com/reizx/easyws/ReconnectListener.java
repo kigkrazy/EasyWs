@@ -2,26 +2,32 @@ package com.reizx.easyws;
 
 import com.google.common.eventbus.Subscribe;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 class ReconnectListener {
-    private final static ReconnectListener listener = new ReconnectListener();
-
-    static {
-        listener.register();
-    }
-
-    private void register() {
-        EventBusUtil.register(this);
-    }
-
     @Subscribe
     private void reconnect(ReconnectEvent event) {
-        try {
-            assert event.getWs() != null;
-            if (event.getWs() != null || !event.getWs().isOpen()) {
-                event.getWs().reconnectBlocking();
+        Timer timer = new Timer();
+        int retry = 0;
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    if (retry >= event.getMaxRetry()){
+                        timer.cancel();
+                        return;
+                    }
+
+                    if (event.getWs() != null || !event.getWs().isOpen()) {
+                        event.getWs().reconnectBlocking();
+                        return;
+                    }
+                    timer.cancel();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        }, 1000, 3000);
     }
 }

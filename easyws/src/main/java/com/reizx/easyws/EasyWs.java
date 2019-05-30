@@ -5,9 +5,20 @@ import org.java_websocket.drafts.Draft;
 import org.java_websocket.handshake.ServerHandshake;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 
 public abstract class EasyWs extends WebSocketClient {
+
+    static {
+        EventBusUtil.register(new ReconnectListener());//注册监听事件
+    }
+
+    public EasyWs(String url) throws URISyntaxException {
+        this(new URI(url));
+    }
+
+
     public EasyWs(URI serverUri) {
         super(serverUri);
     }
@@ -31,7 +42,7 @@ public abstract class EasyWs extends WebSocketClient {
     @Override
     public void onClose(int code, String reason, boolean remote) {
         close(code, reason, remote);
-        EventBusUtil.post(new ReconnectEvent(this));//发射post重启命令
+        EventBusUtil.post(new ReconnectEvent(this, 50));//发射post重启命令
     }
 
     @Override
