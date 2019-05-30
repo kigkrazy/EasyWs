@@ -27,10 +27,11 @@ public abstract class EasyWs extends WebSocketClient {
     public EasyWs(URI serverUri, Draft protocolDraft, Map<String, String> httpHeaders, int connectTimeout) {
         super(serverUri, protocolDraft, httpHeaders, connectTimeout);
     }
-    @Override
 
-    public void onClose(int arg0, String arg1, boolean arg2) {
-        EventBusUtil.post(this);
+    @Override
+    public void onClose(int code, String reason, boolean remote) {
+        close(code, reason, remote);
+        EventBusUtil.post(new ReconnectEvent(this));//发射post重启命令
     }
 
     @Override
@@ -58,6 +59,4 @@ public abstract class EasyWs extends WebSocketClient {
     public abstract void close(int code, String reason, boolean remote);
 
     public abstract void error(Exception ex);
-
-
 }

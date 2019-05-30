@@ -1,5 +1,6 @@
 package com.reizx.easyws;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.java_websocket.client.WebSocketClient;
 
@@ -7,6 +8,7 @@ import org.java_websocket.client.WebSocketClient;
  * 重连事件
  */
 @Data
+@AllArgsConstructor
 class ReconnectEvent {
     WebSocketClient ws;
 }
