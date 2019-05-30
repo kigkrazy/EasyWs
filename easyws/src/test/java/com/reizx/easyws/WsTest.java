@@ -32,8 +32,11 @@ public class WsTest {
 
         ws.connectBlocking();
         while (true){
-            Thread.sleep(1000);
+            try {
+                ws.send(" hello..");
+            }catch (Exception ignored){
+            }
+            Thread.sleep(5000);
         }
-//        Thread.sleep(3 * 60 * 1000);
     }
 }
