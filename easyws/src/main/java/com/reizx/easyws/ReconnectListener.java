@@ -8,28 +8,15 @@ import java.util.TimerTask;
 class ReconnectListener {
     @Subscribe
     private void reconnect(ReconnectEvent event) {
-        Timer timer = new Timer();
-        int retry = 0;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                try {
-//                    if (retry >= event.getMaxRetry()){
-//                        // 重试次数过多
-//                        timer.cancel();
-//                        return;
-//                    }
-
-                    if (event.getWs() != null || !event.getWs().isOpen()) {
-                        //当ws存在但是状态为端口连接的时候进行重连
-                        event.getWs().reconnectBlocking();
-                        return;
-                    }
-                    timer.cancel();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        try {
+            if (event.getWs() != null || !event.getWs().isOpen()) {//当ws存在但是状态为端口连接的时候进行重连
+                //
+                // 此处有必要做一个说明
+                // 每一次event.getWs().reconnectBlocking();失败的时候都会调用刚到onClose()处，因此可以形成一个循环。
+                event.getWs().reconnectBlocking();
             }
-        }, 1000, 3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
