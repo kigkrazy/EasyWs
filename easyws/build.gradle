@@ -37,7 +37,7 @@ publish {
     repoName = 'reizxutils'
     userOrg = 'kigkrazy'//bintray.com用户名
     groupId = 'com.reizx'//jcenter上的路径
-    artifactId = 'paperdb'//项目名称
+    artifactId = 'easyws'//项目名称
     publishVersion = version //版本号
     desc = 'an paperdb utils'
     website = 'https://github.com/kigkrazy/Paper'
