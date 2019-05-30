@@ -14,11 +14,11 @@ class ReconnectListener {
             @Override
             public void run() {
                 try {
-                    if (retry >= event.getMaxRetry()){
-                        // 重试次数过多
-                        timer.cancel();
-                        return;
-                    }
+//                    if (retry >= event.getMaxRetry()){
+//                        // 重试次数过多
+//                        timer.cancel();
+//                        return;
+//                    }
 
                     if (event.getWs() != null || !event.getWs().isOpen()) {
                         //当ws存在但是状态为端口连接的时候进行重连
