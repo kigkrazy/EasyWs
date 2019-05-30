@@ -21,7 +21,6 @@ public class WsTest {
 
             @Override
             public void close(int code, String reason, boolean remote) {
-
                 System.out.println("close connection ");
             }
 
