@@ -23,3 +23,23 @@ dependencies {
     //websocket lib
     compile "org.java-websocket:Java-WebSocket:1.4.0"
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 上传jcenter的工具配置
+apply plugin: 'com.novoda.bintray-release'
+//发布到
+//发布请执行
+// 加上 -x test 跳过单元测试
+//gradlew clean build -x test bintrayUpload -PbintrayUser=kigkrazy -PbintrayKey=BINTRAY_KEY -PdryRun=false
+publish {
+    repoName = 'reizxutils'
+    userOrg = 'kigkrazy'//bintray.com用户名
+    groupId = 'com.reizx'//jcenter上的路径
+    artifactId = 'paperdb'//项目名称
+    publishVersion = version //版本号
+    desc = 'an paperdb utils'
+    website = 'https://github.com/kigkrazy/Paper'
+}

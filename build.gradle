@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.2'
         classpath "net.ltgt.gradle:gradle-apt-plugin:0.19"
+        classpath 'com.novoda:bintray-release:0.9.1'
     }
 }
 
