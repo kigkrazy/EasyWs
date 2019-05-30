@@ -3,7 +3,11 @@ a simple lib for websocket base on [Java-WebSocket](https://github.com/TooTallNa
 
 
 # how to use it ?
+```
+compile 'com.reizx:easyws:1.0.1'
+```
 
+## example
 ```
 public class WsTest {
     @Test
