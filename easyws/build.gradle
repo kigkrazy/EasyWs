@@ -40,5 +40,5 @@ publish {
     artifactId = 'easyws'//项目名称
     publishVersion = version //版本号
     desc = 'an paperdb utils'
-    website = 'https://github.com/kigkrazy/Paper'
+    website = 'https://github.com/kigkrazy/easyws'
 }
