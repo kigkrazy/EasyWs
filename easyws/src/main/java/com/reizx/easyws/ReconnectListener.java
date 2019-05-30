@@ -2,9 +2,6 @@ package com.reizx.easyws;
 
 import com.google.common.eventbus.Subscribe;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 class ReconnectListener {
     @Subscribe
     private void reconnect(ReconnectEvent event) {
